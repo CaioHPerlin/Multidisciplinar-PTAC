@@ -1,0 +1,28 @@
+{
+    "produtos": [
+        {
+            "id": 1,
+            "titulo": "Camiseta Full Metal Alchemist",
+            "data_cadastro": "02/05/2006",
+            "preco": 60,
+            "descricao": "O poder da alquimia não está nas mãos do alquimista, mas sim em sua habilidade de transformar sonhos em realidade. Camisetas 100% Algodão fio 30.1 penteada, Estampa de Serigrafia (Silk Screen)",
+            "imagem": "/imagens/camiseta-fullmetal.png"
+        },
+        {
+            "id": 2,
+            "titulo": "Camiseta Pink Floyd",
+            "data_cadastro": "07/06/2023",
+            "preco": 50,
+            "descricao": "A música é a viagem que nos leva para além do tempo e do espaço. Pink Floyd é a trilha sonora que nos guia nessa jornada inesquecível. Camisetas 100% Algodão fio 30.1 penteada, Estampa de Serigrafia (Silk Screen)",
+            "imagem": "/imagens/camiseta-floyd.png"
+        },
+        {
+            "id": 3,
+            "titulo": "Camiseta Harry Potter Sonserina",
+            "data_cadastro": "07/06/2023",
+            "preco": 50,
+            "descricao": "A magia está em todos nós, basta acreditar e permitir que ela brilhe. Camisetas 100% Algodão fio 30.1 penteada, Estampa de Serigrafia (Silk Screen)",
+            "imagem": "/imagens/camiseta-sonserina.png"
+        }
+    ]
+}
