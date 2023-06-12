@@ -13,26 +13,30 @@ export default async function Home() {
   const formatDate = (date) => new Date(date).toLocaleDateString();
 
   return (
-    <main className="select-none bg-neutral-950 flex flex-wrap">
-      <div className="m-20">
-        <Link href="/cadastro" className="bg-red-800 p-2">
+    <main className="bg-neutral-950 grid grid-cols-1">
+      <nav className="border-gray-200 bg-red-700">
+      <div className="m-10">
+        <Link href="/cadastro" className="bg-red-900 hover:bg-red-800 font-semibold text-white rounded p-2">
           CADASTRO
         </Link>
       </div>
-      <div className="p-6 m-12 mt-36 bg-red-700 border-red-800 border-r-8">
+      </nav>
+      <div className="m-10 grid grid-cols-4 gap-4 justify-items-center rounded overflow-hidden shadow-lg bg-red-700">
         {produtos.map((produto) => (
           <div key={produto.id}>
-            <h1>{produto.titulo}</h1>
-            <h2>{produto.preco}</h2>
-            <p>{produto.descricao}</p>
-            <p>{formatDate(produto.data_cadastro)}</p>
-            <Image
+            <div className="px-1 py-8 pb-6">
+            <Image className="rounded"
               src={produto.imagem}
               width={300}
               height={300}
               alt={produto.titulo}
-            />
-          </div>
+            /> 
+            <h1 className="py-2 text-sm text-gray-200 text-base mr-2 mb-2">{produto.titulo}</h1>
+            <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-red-900 relative inline-block">
+            <span className="px-4 py-1 text-sm text-2xl font-semibold text-white relative mr-2 mb-2 underline decoration-yellow-500 ">R${produto.preco}</span>
+            </span>
+            </div>
+            </div>
         ))}
       </div>
     </main>
