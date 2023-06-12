@@ -8,6 +8,7 @@ export default async function Home() {
     next: { revalidate: 1 },
   });
   const produtos = await req.json();
+  console.log(produtos)
 
   const formatDate = (date) => new Date(date).toLocaleDateString();
 

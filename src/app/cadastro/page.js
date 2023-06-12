@@ -2,10 +2,12 @@
 import { useState } from 'react';
 import '../globals.css';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 //Imagem que carrega conforme o usuário digita o link (+)
 //Verificar formato da DATACADASTRO
 
 export default function Cadastro() {
+  const route = useRouter();
   const [titulo, setTitulo] = useState('');
   const [preco, setPreco] = useState();
   const [descricao, setDescricao] = useState('');
@@ -22,7 +24,14 @@ export default function Cadastro() {
       imagem: imagem,
     };
 
-    console.log(produto);
+    const produtoJSON = JSON.stringify(produto);
+    
+    fetch("http://localhost:3001/produtos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        body: produtoJSON
+    }).then(function(){route.push("/")}).catch(() => console.log("Não foi possível cadastrar o produto."));
+
     setTitulo("");
     setPreco("");
     setDescricao("");
