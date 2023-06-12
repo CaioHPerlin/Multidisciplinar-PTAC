@@ -9,6 +9,8 @@ export default async function Home() {
   });
   const produtos = await req.json();
 
+  const formatDate = (date) => new Date(date).toLocaleDateString();
+
   return (
     <main className="select-none bg-neutral-950 flex flex-wrap">
       <div className="m-20">
@@ -22,7 +24,7 @@ export default async function Home() {
             <h1>{produto.titulo}</h1>
             <h2>{produto.preco}</h2>
             <p>{produto.descricao}</p>
-            <p>{produto.data_cadastro}</p>
+            <p>{formatDate(produto.data_cadastro)}</p>
             <Image
               src={produto.imagem}
               width={300}

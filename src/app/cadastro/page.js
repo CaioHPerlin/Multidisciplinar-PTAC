@@ -13,7 +13,7 @@ export default function Cadastro() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const dataCadastro = new Date(Date.now()).toLocaleDateString();
+    const dataCadastro = new Date(Date.now());
     const produto = {
       titulo: titulo,
       dataCadastro: dataCadastro,
