@@ -30,7 +30,7 @@ export default async function Home() {
       <div className="m-10 grid grid-cols-4 gap-4 justify-items-center rounded overflow-hidden shadow-lg bg-red-700">
         {produtos.map((produto) => (
           <div key={produto.id}>
-            <Link href={`/${produto.id}`} className="px-1 py-8 pb-6">
+            <Link href={`/produto/${produto.id}`} className="px-1 py-8 pb-6">
               <Image className="rounded"
                 src={produto.imagem}
                 width={300}
