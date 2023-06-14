@@ -14,19 +14,25 @@ export default async function Detalhamento({ params }) {
   const produto = await req.json();
 
   return (
-    <main className="bg-neutral-950 grid grid-cols-1">
+    <main className=" bg-neutral-950 grid grid-cols-1">
       <Navbar/>
-      <Image
-        className="rounded"
-        src={produto.imagem}
-        width={500}
-        height={500}
-        alt={produto.titulo}
-      />
-      <div className="m-10 grid grid-rows-3 gap-4 justify-items-end rounded overflow-hidden shadow-lg bg-red-700">
-        <h1 className="">{produto.titulo}</h1>
-        <h1 className="">R${produto.preco}</h1>
-        <h1 className="">{produto.descricao}</h1>
+      <div className='flex justify-center'>
+        <div className='w-3/4 m-10 bg-red-700 p-4 rounded grid grid-cols-2 justify-items-center'>
+          <Image
+            className="rounded"
+            src={produto.imagem}
+            width={700}
+            height={700}
+            alt={produto.titulo}
+          />
+          <div className=" m-10 justfiy-items-start rounded overflow-hidden shadow-lg bg-red-700 ">
+            <h1 className="">{produto.titulo}</h1>
+            <h1 className="mb-4">Código: #{produto.id}</h1>
+            <h1 className="font-bold text-2xl">R${produto.preco}</h1>
+            <span className="border-t-1 color-white"></span>
+            <h1 className="">{produto.descricao}</h1>
+          </div>
+        </div>
       </div>
     </main>
   );
