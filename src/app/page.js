@@ -12,7 +12,7 @@ export default async function Home() {
   return (
     <main className="bg-neutral-950 grid grid-cols-1">
       <Navbar/>
-      <div className="m-8 grid grid-cols-4 gap-4 justify-items-center rounded overflow-hidden shadow-lg bg-red-700">
+      <div className="m-8 p-6 grid grid-cols-4 gap-4 justify-items-center rounded overflow-hidden shadow-lg bg-red-700">
         {produtos.map((produto) => ( <Card item={produto}/> ))}
       </div>
     </main>
