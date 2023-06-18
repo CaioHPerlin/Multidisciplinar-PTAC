@@ -1,5 +1,6 @@
 'use client';
 import Container from '@/app/components/Container';
+import Footer from '@/app/components/Footer';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
@@ -28,7 +29,7 @@ export default async function Detalhamento({ params }) {
 
   return (
     <Container>
-      <div className="flex justify-center">
+      <div className="flex justify-center py-2">
         <div className="w-3/4 m-10 bg-red-700 p-4 rounded grid grid-cols-2 justify-items-center">
           <Image
             className="rounded"
@@ -73,6 +74,7 @@ export default async function Detalhamento({ params }) {
           </div>
         </div>
       </div>
+      <Footer/>
     </Container>
   );
 }

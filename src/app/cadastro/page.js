@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Container from '../components/Container';
+import Footer from '../components/Footer';
 //Imagem que carrega conforme o usuário digita o link (+)
 
 export default function Cadastro() {
@@ -44,43 +45,53 @@ export default function Cadastro() {
       <div className="flex justify-center py-8">
         <form
           onSubmit={handleSubmit}
-          className="grid grid-cols-1 w-2/4 gap-4 p-6 bg-red-700 border-red-800 border-r-8"
+          className="grid grid-cols-1 w-2/4 gap-4 p-7 bg-red-700 border-red-800 rounded"
         >
+          <h1 className="text-center font-bold text-2xl">Cadastre seu produto aqui!</h1>
+
+<span className="tracking-widest relative block w-full border-t my-2 drop-shadow-lg opacity-50 text-center">
+</span>
+
+          <label className="mt-2">Como podemos chamar seu produto?</label>
           <input
             required
             value={titulo}
-            className="w-50 p-1"
+            className="w-50 p-2 pl-4 rounded outline-none"
             type="text"
-            placeholder="Nome do Produto"
+            placeholder="Insira o nome do produto"
             onChange={(e) => setTitulo(e.target.value)}
           />
+          <label className="">Qual o preço do seu produto?</label>
           <input
             required
             value={preco}
-            className="w-50 p-1"
+            className="w-50 p-2 pl-4 rounded outline-none"
             type="number"
-            placeholder="Insira Preço do Produto"
+            placeholder="Insira o preço do produto"
             onChange={(e) => setPreco(e.target.value)}
           />
+          <label className="">Como podemos descrever seu produto?</label>
           <input
             required
             value={descricao}
-            className="w-50 p-1"
+            className="w-50 p-2 pl-4 rounded outline-none"
             type="text"
-            placeholder="Descrição do Produto"
+            placeholder="Crie uma descrição do produto"
             onChange={(e) => setDescricao(e.target.value)}
           />
+          <label className="">Qual imagem será utilizada para o produto?</label>
           <input
             required
             value={imagem}
-            className="w-50 p-1"
+            className="w-50 p-2 pl-4 rounded outline-none"
             type="text"
-            placeholder="URL da Imagem"
+            placeholder="Insira o URL da imagem"
             onChange={(e) => setImagem(e.target.value)}
           />
-          <button type="submit">Enviar</button>
+          <button type="submit" className=" bg-red-600 hover:bg-red-500 p-3 mt-4 font-bold shadow-lg transition duration-300 ease-in-out hover:scale-105">Enviar</button>
         </form>
       </div>
+      <Footer/>
     </Container>
   );
 }
