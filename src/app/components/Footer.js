@@ -7,7 +7,7 @@ export default function Footer({ item }) {
     <div className="md:flex md:justify-between">
     <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
     <div>
-        <h2 class="mb-4 text-sm text-white font-bold">PROGRAMADORES</h2>
+        <h2 className="mb-4 text-sm text-white font-bold">PROGRAMADORES</h2>
             <ul className="text-white font-medium">
             <li className="mb-4">
             <a href="https://github.com/Mooniemd" className="hover:underline ">Moonie</a>
