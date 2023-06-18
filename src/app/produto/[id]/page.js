@@ -27,6 +27,8 @@ export default async function Detalhamento({ params }) {
     }).catch((err) => {console.log("[handleDelete] Ocorreu um erro: " + err)})
   }
 
+  const formatDate = (date) => new Date(date).toLocaleDateString();
+
   return (
     <Container>
       <div className="flex justify-center py-2">
@@ -44,6 +46,7 @@ export default async function Detalhamento({ params }) {
             <span className="block w-full border-t my-4 mx-auto drop-shadow-lg opacity-50"></span>
             <h1 className="font-bold text-2xl my-2">R${produto.preco}</h1>
             <h1 className="text-justify text-sm my-2">{produto.descricao}</h1>
+            <h1 className="text-justify text-sm my-2">{formatDate(produto.data_cadastro)}</h1>
             <span className="block w-full border-t my-4 mx-auto drop-shadow-lg opacity-50"></span>
             <h1 className="my-4">Tamanho</h1>
             <div className="grid grid-cols-5 gap-4 font-bold rounded">
