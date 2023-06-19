@@ -1,6 +1,5 @@
 'use client';
 import Container from '@/app/components/Container';
-import Footer from '@/app/components/Footer';
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -91,7 +90,6 @@ export default async function Detalhamento() {
           </div>
         </div>
       </div>
-      <Footer />
     </Container>
   );
 }

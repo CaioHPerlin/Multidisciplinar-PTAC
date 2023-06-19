@@ -2,7 +2,6 @@
 import './globals.css';
 import Card from './components/Card';
 import Container from './components/Container';
-import Footer from './components/Footer';
 
 export default async function Home() {
   const req = await fetch('http://localhost:3001/produtos', {
@@ -15,7 +14,6 @@ export default async function Home() {
       <div className="font-inter body-font m-8 p-6 grid grid-cols-4 gap-6 justify-items-center rounded overflow-hidden shadow-lg bg-red-700">
         {produtos.map((produto) => ( <Card key={produto.id} item={produto}/> ))}
       </div>
-      <Footer/>
     </Container>
   );
 }

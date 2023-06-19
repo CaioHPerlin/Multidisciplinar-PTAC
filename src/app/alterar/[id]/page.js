@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Container from '@/app/components/Container';
-import Footer from '@/app/components/Footer';
 
 export default function Cadastro() {
   const route = useRouter();
@@ -13,7 +12,6 @@ export default function Cadastro() {
   const [descricao, setDescricao] = useState('');
   const [imagem, setImagem] = useState('');
   const [dataCadastro, setDataCadastro] = useState('');
-  const [id, setId] = useState('');
 
   async function fetchData(){
     const idJSON = JSON.stringify({ id: parseInt(params.id) });
@@ -30,7 +28,6 @@ export default function Cadastro() {
     setDescricao(produto.descricao);
     setImagem(produto.imagem);
     setDataCadastro(produto.data_cadastro);
-    setId(produto.id);
   }
 
   useEffect(() => {
@@ -51,7 +48,7 @@ export default function Cadastro() {
 
     fetch('http://localhost:3001/produtos', {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'content-type': 'application/json' },
       body: produtoJSON,
     })
       .then(() => {
@@ -117,7 +114,6 @@ export default function Cadastro() {
           </button>
         </form>
       </div>
-      <Footer />
     </Container>
   );
 }

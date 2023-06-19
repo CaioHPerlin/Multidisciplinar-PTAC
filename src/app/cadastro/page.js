@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Container from '../components/Container';
-import Footer from '../components/Footer';
 
 export default function Cadastro() {
   const route = useRouter();
@@ -91,7 +90,6 @@ export default function Cadastro() {
           </button>
         </form>
       </div>
-      <Footer />
     </Container>
   );
 }
