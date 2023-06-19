@@ -1,11 +1,13 @@
 'use client';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Container from '../components/Container';
-import Footer from '../components/Footer';
+import { useParams, useRouter } from 'next/navigation';
+import Container from '@/app/components/Container';
+import Footer from '@/app/components/Footer';
 
 export default function Cadastro() {
   const route = useRouter();
+  const params = useParams();
+
   const [titulo, setTitulo] = useState('');
   const [preco, setPreco] = useState();
   const [descricao, setDescricao] = useState('');
@@ -15,6 +17,7 @@ export default function Cadastro() {
     event.preventDefault();
     const dataCadastro = new Date(Date.now());
     const produto = {
+      id: params.id,
       titulo: titulo,
       dataCadastro: dataCadastro,
       preco: preco,
@@ -23,8 +26,8 @@ export default function Cadastro() {
     };
     const produtoJSON = JSON.stringify(produto);
 
-    fetch('http://localhost:3001/produto', {
-      method: 'POST',
+    fetch('http://localhost:3001/produtos', {
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: produtoJSON,
     })
@@ -42,7 +45,7 @@ export default function Cadastro() {
           className="grid grid-cols-1 w-2/4 gap-4 p-7 bg-red-700 border-red-800 rounded"
         >
           <h1 className="text-center font-bold text-2xl">
-            Cadastre seu produto aqui!
+            Altere seu produto aqui!
           </h1>
 
           <span className="tracking-widest relative block w-full border-t my-2 drop-shadow-lg opacity-50 text-center"></span>

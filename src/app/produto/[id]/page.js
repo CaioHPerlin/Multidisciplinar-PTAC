@@ -2,17 +2,19 @@
 import Container from '@/app/components/Container';
 import Footer from '@/app/components/Footer';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
 
-export default async function Detalhamento({ params }) {
-  const idJSON = JSON.stringify({ id: parseInt(params.id) });
+export default async function Detalhamento() {
   const router = useRouter();
+  const params = useParams();
+  const idJSON = JSON.stringify({ id: parseInt(params.id) });
 
   const req = await fetch('http://localhost:3001/produtos', {
     method: 'POST',
     cache: 'no-cache',
     headers: { 'content-type': 'application/json' },
-    body: idJSON
+    body: idJSON,
   });
 
   const produto = await req.json();
@@ -21,11 +23,15 @@ export default async function Detalhamento({ params }) {
     fetch('http://localhost:3001/produtos', {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' },
-      body: idJSON
-    }).then(() => {
-      router.push("/")
-    }).catch((err) => {console.log("[handleDelete] Ocorreu um erro: " + err)})
-  }
+      body: idJSON,
+    })
+      .then(() => {
+        router.push('/');
+      })
+      .catch((err) => {
+        console.log('[handleDelete] Ocorreu um erro: ' + err);
+      });
+  };
 
   const formatDate = (date) => new Date(date).toLocaleDateString();
 
@@ -34,7 +40,7 @@ export default async function Detalhamento({ params }) {
       <div className="flex justify-center py-2">
         <div className="w-3/4 m-10 bg-red-700 p-4 rounded grid grid-cols-2 justify-items-center">
           <Image
-            className="rounded"
+            className="rounded w-full h-auto"
             src={produto.imagem}
             width={700}
             height={700}
@@ -43,10 +49,12 @@ export default async function Detalhamento({ params }) {
           <div className="m-10 justfiy-items-start rounded overflow-hidden bg-red-700 ">
             <h1 className="font-bold text-2xl">{produto.titulo}</h1>
             <div className="mb-4 inline-flex">
-              <h1>Código: #{produto.id} |   {formatDate(produto.data_cadastro)}</h1>
+              <h1>
+                Código: #{produto.id} | {formatDate(produto.data_cadastro)}
+              </h1>
             </div>
             <span className="block w-full border-t my-4 mx-auto drop-shadow-lg opacity-50"></span>
-            <h1 className="font-bold text-2xl my-2">R${produto.preco}</h1>
+            <h1 className="font-bold text-2xl my-2">R${produto.preco.toFixed(2)}</h1>
             <h1 className="text-justify text-sm my-2">{produto.descricao}</h1>
             <span className="block w-full border-t my-4 mx-auto drop-shadow-lg opacity-50"></span>
             <h1 className="my-4">Tamanho</h1>
@@ -68,14 +76,14 @@ export default async function Detalhamento({ params }) {
               </button>
             </div>
             <div className="my-14 grid grid-cols-2 gap-8">
-              <button className="bg-red-600 hover:bg-red-500 font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
+              <Link href={`/alterar/${produto.id}`} className="text-center bg-red-600 hover:bg-red-500 font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
                 Alterar
-              </button>
+              </Link>
               <button onClick={handleDelete} className="bg-red-600 hover:bg-red-500 font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
                 Deletar
               </button>
             </div>
-            <div className="grid grid-cols-1" >
+            <div className="grid grid-cols-1">
               <button className="bg-red-600 hover:bg-red-500 font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
                 Comprar
               </button>
@@ -83,7 +91,7 @@ export default async function Detalhamento({ params }) {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </Container>
   );
 }

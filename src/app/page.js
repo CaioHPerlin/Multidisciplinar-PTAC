@@ -13,7 +13,7 @@ export default async function Home() {
   return (
     <Container>
       <div className="font-inter body-font m-8 p-6 grid grid-cols-4 gap-6 justify-items-center rounded overflow-hidden shadow-lg bg-red-700">
-        {produtos.map((produto) => ( <Card item={produto}/> ))}
+        {produtos.map((produto) => ( <Card key={produto.id} item={produto}/> ))}
       </div>
       <Footer/>
     </Container>
