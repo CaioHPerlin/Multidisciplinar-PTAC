@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Container from '@/app/components/Container';
 import Footer from '@/app/components/Footer';
@@ -12,10 +12,33 @@ export default function Cadastro() {
   const [preco, setPreco] = useState();
   const [descricao, setDescricao] = useState('');
   const [imagem, setImagem] = useState('');
+  const [dataCadastro, setDataCadastro] = useState('');
+  const [id, setId] = useState('');
+
+  async function fetchData(){
+    const idJSON = JSON.stringify({ id: parseInt(params.id) });
+
+    const req = await fetch('http://localhost:3001/produtos', {
+      method: 'POST',
+      cache: 'no-cache',
+      headers: { 'content-type': 'application/json' },
+      body: idJSON,
+    });
+    const produto = await req.json();
+    setTitulo(produto.titulo);
+    setPreco(produto.preco);
+    setDescricao(produto.descricao);
+    setImagem(produto.imagem);
+    setDataCadastro(produto.data_cadastro);
+    setId(produto.id);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const dataCadastro = new Date(Date.now());
     const produto = {
       id: params.id,
       titulo: titulo,
