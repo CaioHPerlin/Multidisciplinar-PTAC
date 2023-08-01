@@ -9,7 +9,7 @@ export default async function Detalhamento() {
   const params = useParams();
   const idJSON = JSON.stringify({ id: parseInt(params.id) });
 
-  const req = await fetch('http://localhost:3001/produtos', {
+  const req = await fetch('https://centurion-api.vercel.app/produtos', {
     method: 'POST',
     cache: 'no-cache',
     headers: { 'content-type': 'application/json' },
