@@ -22,7 +22,7 @@ export default function Cadastro() {
     };
     const produtoJSON = JSON.stringify(produto);
 
-    fetch('http://localhost:3001/produto', {
+    fetch('https://centurion-api.vercel.app/produto', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: produtoJSON,

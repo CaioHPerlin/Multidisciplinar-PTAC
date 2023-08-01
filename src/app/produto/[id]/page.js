@@ -19,7 +19,7 @@ export default async function Detalhamento() {
   const produto = await req.json();
 
   const handleDelete = () => {
-    fetch('http://localhost:3001/produtos', {
+    fetch('https://centurion-api.vercel.app/produtos', {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' },
       body: idJSON,

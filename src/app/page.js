@@ -4,7 +4,7 @@ import Card from './components/Card';
 import Container from './components/Container';
 
 export default async function Home() {
-  const req = await fetch('http://localhost:3001/produtos', {
+  const req = await fetch('https://centurion-api.vercel.app/produtos', {
     cache:'no-cache'
   });
   const produtos = await req.json();

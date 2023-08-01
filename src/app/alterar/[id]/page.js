@@ -16,7 +16,7 @@ export default function Cadastro() {
   async function fetchData(){
     const idJSON = JSON.stringify({ id: parseInt(params.id) });
 
-    const req = await fetch('http://localhost:3001/produtos', {
+    const req = await fetch('https://centurion-api.vercel.app/produtos', {
       method: 'POST',
       cache: 'no-cache',
       headers: { 'content-type': 'application/json' },
@@ -46,7 +46,7 @@ export default function Cadastro() {
     };
     const produtoJSON = JSON.stringify(produto);
 
-    fetch('http://localhost:3001/produtos', {
+    fetch('https://centurion-api.vercel.app/produtos', {
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
       body: produtoJSON,
